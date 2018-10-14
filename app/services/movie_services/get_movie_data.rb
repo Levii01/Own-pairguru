@@ -4,8 +4,8 @@ module MovieServices
   class GetMovieData < ApplicationService
     include Dry::Monads::Do.for(:call)
 
-    def call(movie)
-      request = yield create_request_url(movie.title)
+    def call(title)
+      request = yield create_request_url(title)
       response = yield get_movie_data(request)
       parse_movie_attributes(response)
     end
@@ -25,7 +25,7 @@ module MovieServices
     end
 
     def get_url(movie_name)
-      URI.parse("#{Rails.configuration.movie_api_url}/api/v1/movies/#{movie_name}")
+      URI.parse("#{Rails.configuration.movie_api_url}/api/v1/movies/#{URI.encode(movie_name)}")
     end
 
     def parse_response(response)
