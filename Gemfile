@@ -35,6 +35,8 @@ group :development, :test do
   gem "rspec-rails"
   gem "rubocop"
   gem "simplecov"
+  gem "vcr"
+  gem "webmock", '~> 2.1'
 end
 
 group :test do
