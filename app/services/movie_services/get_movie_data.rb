@@ -1,9 +1,7 @@
-require 'net/http'
+require "net/http"
 
 module MovieServices
   class GetMovieData < ApplicationService
-    include Dry::Monads::Do.for(:call)
-
     def call(title)
       request = yield create_request_url(title)
       response = yield get_movie_data(request)
@@ -21,7 +19,11 @@ module MovieServices
     def parse_movie_attributes(response)
       response = JSON.parse(response)
 
-      Success(parse_response(response))
+      if response["message"] == "Couldn't find Movie"
+        Success(parse_response(response))
+      else
+        Failure(:movie_not_found)
+      end
     end
 
     def get_url(movie_name)
@@ -29,7 +31,7 @@ module MovieServices
     end
 
     def parse_response(response)
-      response['data']['attributes'].with_indifferent_access
+      response["data"]["attributes"].with_indifferent_access
     end
   end
 end
