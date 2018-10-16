@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pairguru-api.herokuapp.com/api/v1/movies/Kill%20Bill%202
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - pairguru-api.herokuapp.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 16 Oct 2018 22:47:11 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"6527b17d4afd2fcc987826437f2c5301"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 0eb72faa-d7b1-499e-b392-b37c29715e86
+      X-Runtime:
+      - '0.014392'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"4","type":"movie","attributes":{"title":"Kill Bill 2","plot":"The
+        Bride continues her quest of vengeance against her former boss and lover Bill,
+        the reclusive bouncer Budd and the treacherous, one-eyed Elle.","rating":8.0,"poster":"/kill_bill_2.jpg"}}}'
+    http_version: 
+  recorded_at: Tue, 16 Oct 2018 22:47:12 GMT
+recorded_with: VCR 4.0.0
