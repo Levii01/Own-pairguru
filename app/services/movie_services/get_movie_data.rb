@@ -14,7 +14,7 @@ module MovieServices
 
     def parse_movie_attributes(response)
       response = JSON.parse(response)
-      return {} if response["message"]
+      return {} if response["message"] == "Couldn't find Movie"
       parse_response(response)
     end
 
