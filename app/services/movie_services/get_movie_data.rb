@@ -2,8 +2,8 @@ require "net/http"
 
 module MovieServices
   class GetMovieData < ApplicationService
-    def call(movie)
-      request = get_url(movie.title)
+    def call(title)
+      request = get_url(title)
       get_movie_data(request)
     end
 
@@ -19,7 +19,7 @@ module MovieServices
     end
 
     def get_url(movie_name)
-      URI.parse("#{Rails.configuration.movie_api_url}/api/v1/movies/#{movie_name}")
+      URI.parse("#{Rails.configuration.movie_api_url}/api/v1/movies/#{URI.encode(movie_name)}")
     end
 
     def parse_response(response)
