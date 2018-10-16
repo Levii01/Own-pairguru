@@ -1,18 +1,29 @@
-require 'net/http'
+require "net/http"
 
 module MovieServices
   class GetMovieData < ApplicationService
     def call(movie)
-      get_movie_data(get_url(movie.title))
+      request = get_url(movie.title)
+      get_movie_data(request)
     end
 
     def get_movie_data(request)
-      result = Net::HTTP.get(request)
-      JSON.parse(result)['data'].with_indifferent_access
+      response = Net::HTTP.get(request)
+      parse_movie_attributes(response)
+    end
+
+    def parse_movie_attributes(response)
+      response = JSON.parse(response)
+      return {} if response["message"]
+      parse_response(response)
     end
 
     def get_url(movie_name)
       URI.parse("#{Rails.configuration.movie_api_url}/api/v1/movies/#{movie_name}")
+    end
+
+    def parse_response(response)
+      response["data"]["attributes"].with_indifferent_access
     end
   end
 end
