@@ -12,6 +12,7 @@ gem "sass-rails"
 gem "sqlite3"
 gem "uglifier"
 gem "font-awesome-rails"
+gem "graphql"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
@@ -42,3 +43,5 @@ end
 group :test do
   gem "shoulda-matchers"
 end
+
+gem 'graphiql-rails', group: :development
