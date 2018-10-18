@@ -7,8 +7,10 @@ RSpec.describe CommentsController, type: :controller do
   }
   let(:invalid_attributes) { { body: "", movie_id: movie.id, user_id: user.id } }
 
+  before { sign_in(user) }
+
   describe "POST #create" do
-    context "with valid params" do
+    context "when valid params" do
       subject { post :create, params: { comment: valid_attributes } }
 
       it "creates a new Comment" do
@@ -22,7 +24,7 @@ RSpec.describe CommentsController, type: :controller do
       end
     end
 
-    context "with invalid params" do
+    context "when invalid params" do
       subject { post :create, params: { comment: invalid_attributes } }
 
       it "creates a new Comment" do
@@ -33,6 +35,18 @@ RSpec.describe CommentsController, type: :controller do
         subject
         expect(response.code).to eq("302")
         expect(response).to redirect_to(movie)
+      end
+    end
+
+    context "when spamer try to add second comment" do
+      let!(:comment) { create(:comment, user: user, movie: movie) }
+
+      subject { post :create, params: { comment: valid_attributes } }
+
+      it "not creates a new Comment" do
+        user.add_role :spamer
+
+        expect { subject }.to change(Comment, :count).by(0)
       end
     end
   end
