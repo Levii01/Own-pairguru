@@ -9,7 +9,7 @@
         %td
           %h4
             = link_to movie.title, movie_path(movie)
-            %p #{movie_data[:rating]}/10 #{fa_icon "star"}
+            %p #{movie_data[:rating] || '?'}/10 #{fa_icon "star"}
           %p
             %strong
               = link_to movie.genre.name, movies_genre_path(movie.genre)

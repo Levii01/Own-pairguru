@@ -1,0 +1,14 @@
+- comments.each do |comment|
+  .row
+    .col-xs-8.col-md-offset-2.comment-box
+      .col-md-11.text-justify
+        %p
+          %h4
+            %strong
+              = comment.user.email
+          %h5
+            = comment.body
+      .col-xs-1
+        - if current_user == comment.user
+          = link_to '', comment, class: 'btn btn-danger glyphicon glyphicon-remove clicker btn-delete',
+                        method: :delete, data: { confirm: 'Are you sure?' }  
