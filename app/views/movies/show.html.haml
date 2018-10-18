@@ -3,16 +3,16 @@
     .col-md-4.col-xs-6
       %img.img-rounded.fit{ src: @movie.decorate.poster(@movie_data[:poster]) }
       .pause
-      %p.text-center #{@movie_data[:rating]}/10 #{fa_icon "star"}
+      %p.text-center #{@movie_data[:rating] || '?'}/10 #{fa_icon "star"}
 
       .progress.option
         .progress-bar.progress-bar-danger.progress-bar-striped.active{:role => "progressbar", 
           :aria => {:valuenow =>"30", :valuemin => "0", :valuemax => "100"},
-          :style=>"width: #{@movie_data[:rating]*10}%"}
+          :style=>"width: #{(@movie_data[:rating] || 0)*10}%"}
     .col-md-8.col-xs-6
-      %h1= @movie_data[:title]
+      %h1= @movie_data[:title] || @movie.title
       .pause
-      %p= @movie_data[:plot]
+      %p= @movie_data[:plot] || @movie.description
 
   = render 'comments/form'    
   = render 'comments/list', comments: @comments

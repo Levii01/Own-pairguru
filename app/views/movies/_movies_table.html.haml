@@ -14,4 +14,4 @@
             %strong
               = link_to movie.genre.name, movies_genre_path(movie.genre)
             = ' (' + movie.released_at.to_s + ')'
-          %p= movie_data[:plot]
+          %p= movie_data[:plot] || movie.description
