@@ -4,6 +4,7 @@ require "sidekiq/testing"
 RSpec.describe MovieInfoMailerWorker, type: :worker do
   let(:user) { create(:user) }
   let(:movie) { create(:movie) }
+
   after { Sidekiq::Worker.clear_all }
 
   context "when send job to worker" do
