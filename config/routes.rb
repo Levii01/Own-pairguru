@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+
+  mount Sidekiq::Web => '/sidekiq'
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/api/graphql' if Rails.env.development?
+  
   devise_for :users
 
   root "home#welcome"
@@ -18,6 +23,4 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     match "graphql", to: "graphql#execute", via: [:get, :post]
   end
-
-  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/api/graphql' if Rails.env.development?
 end
