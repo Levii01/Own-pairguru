@@ -1,14 +1,16 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
+    if current_user.has_role?(:spamer) && comment_exists?
+      return redirect_to_movie("Your comment already exists")
+    end
 
     if @comment.save
-      message = "Comment was successfully created."
+      redirect_to_movie("Comment was successfully created.")
     else
       flash[:comment_error] = @comment.errors.full_messages
-      message = "Comment wasn't created"
+      redirect_to_movie("Comment wasn't created")
     end
-    redirect_to movie_path(comment_params[:movie_id]), notice: message
   end
 
   def destroy
@@ -19,7 +21,15 @@ class CommentsController < ApplicationController
 
   private
 
+  def redirect_to_movie(notice)
+    redirect_to movie_path(comment_params[:movie_id]), notice: notice
+  end
+
+  def comment_exists?
+    Comment.exists?(movie_id: comment_params[:movie_id], user_id: current_user.id)
+  end
+
   def comment_params
-    params.require(:comment).permit(:body, :user_id, :movie_id)
+    @comment_params ||= params.require(:comment).permit(:body, :user_id, :movie_id)
   end
 end
