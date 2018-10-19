@@ -11,6 +11,11 @@ class CommentsController < ApplicationController
     redirect_to_movie(comment.movie_id, "Comment was successfully destroyed.")
   end
 
+  def ranking
+    @top_users = CommentServices::TopCustomers.call
+
+  end
+
   private
 
   def redirect_to_movie(movie_id, message)
