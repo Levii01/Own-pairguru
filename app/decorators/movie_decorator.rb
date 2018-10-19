@@ -6,4 +6,9 @@ class MovieDecorator < Draper::Decorator
       %w[abstract nightlife transport].sample +
       "?a=" + SecureRandom.uuid
   end
+
+  def poster(poster_path)
+    return cover if poster_path.blank?
+    Rails.configuration.movie_api_url + poster_path
+  end
 end

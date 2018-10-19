@@ -1,5 +1,19 @@
-%h1= @movie.title
 .jumbotron
-  = @movie.description
+  .row
+    .col-md-4.col-xs-6
+      %img.img-rounded.fit{ src: @movie.decorate.poster(@movie_data[:poster]) }
+      .pause
+      %p.text-center #{@movie_data[:rating]}/10 #{fa_icon "star"}
+
+      .progress.option
+        .progress-bar.progress-bar-danger.progress-bar-striped.active{:role => "progressbar", 
+          :aria => {:valuenow =>"30", :valuemin => "0", :valuemax => "100"},
+          :style=>"width: #{@movie_data[:rating]*10}%"}
+    .col-md-8.col-xs-6
+      %h1= @movie_data[:title]
+      .pause
+      %p= @movie_data[:plot]
+  .col-md-4
+
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'

@@ -1,0 +1,158 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pairguru-api.herokuapp.com/api/v1/movies/Kill%20Bill%202
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - pairguru-api.herokuapp.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 16 Oct 2018 22:47:11 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"6527b17d4afd2fcc987826437f2c5301"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 5ec36c9e-db56-4576-a8ff-e5c287984b71
+      X-Runtime:
+      - '0.017512'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"4","type":"movie","attributes":{"title":"Kill Bill 2","plot":"The
+        Bride continues her quest of vengeance against her former boss and lover Bill,
+        the reclusive bouncer Budd and the treacherous, one-eyed Elle.","rating":8.0,"poster":"/kill_bill_2.jpg"}}}'
+    http_version: 
+  recorded_at: Tue, 16 Oct 2018 22:47:11 GMT
+- request:
+    method: get
+    uri: https://pairguru-api.herokuapp.com/api/v1/movies/Deffpool
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - pairguru-api.herokuapp.com
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 16 Oct 2018 22:47:11 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - c511f54a-27ef-4551-b24e-e8cf3b788d06
+      X-Runtime:
+      - '0.013918'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"message":"Couldn''t find Movie"}'
+    http_version: 
+  recorded_at: Tue, 16 Oct 2018 22:47:12 GMT
+- request:
+    method: get
+    uri: https://pairguru-api.herokuapp.com/api/v1/movies/Django
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - pairguru-api.herokuapp.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 16 Oct 2018 22:47:12 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"514aeeddfce52bfb49dccf3cde95e86f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 9302731a-4f60-46d9-9585-c4d6fac39b05
+      X-Runtime:
+      - '0.033047'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"2","type":"movie","attributes":{"title":"Django","plot":"With
+        the help of a German bounty hunter, a freed slave sets out to rescue his wife
+        from a brutal Mississippi plantation owner.","rating":8.4,"poster":"/django.jpg"}}}'
+    http_version: 
+  recorded_at: Tue, 16 Oct 2018 22:47:12 GMT
+recorded_with: VCR 4.0.0
