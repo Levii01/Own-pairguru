@@ -1,0 +1,15 @@
+.row
+  .col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2
+    %h1.text-center Top 10 comments
+    %table.table.table-striped
+      %thead
+        %tr
+          %th #
+          %th Email
+          %th Number of comments
+      %tbody
+        - @top_users.each_with_index do |customer, i|
+          %tr
+            %td= i + 1
+            %td= customer[:email]
+            %td= customer[:coments_counted]

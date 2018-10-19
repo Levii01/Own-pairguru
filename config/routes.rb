@@ -3,11 +3,15 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => '/sidekiq'
   mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/api/graphql' if Rails.env.development?
-  
+
   devise_for :users
 
   root "home#welcome"
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy] do
+    collection do
+      get "ranking"
+    end
+  end
   resources :genres, only: :index do
     member do
       get "movies"

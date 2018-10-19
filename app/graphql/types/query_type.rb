@@ -12,7 +12,8 @@ module Types
         Movie.where(id: id)
       elsif context[:query].include?("genre")
         movies = Movie.includes(:genre)
-        context[:number_of_genres] = movies.group(:genre_id).pluck(:genre_id, "COUNT('id')").to_h
+        count_id = Arel.sql("COUNT('id')")
+        context[:number_of_genres] = movies.group(:genre_id).pluck(:genre_id, count_id).to_h
         movies
       else
         Movie.all

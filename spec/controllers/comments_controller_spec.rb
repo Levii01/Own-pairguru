@@ -73,4 +73,11 @@ RSpec.describe CommentsController, type: :controller do
       expect(response).to redirect_to(comment.movie)
     end
   end
+
+  describe "GET ranking" do
+    it "renders the ranking template" do
+      get :ranking
+      expect(response.status).to eq 200
+    end
+  end
 end

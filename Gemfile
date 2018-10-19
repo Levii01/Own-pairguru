@@ -15,6 +15,7 @@ gem "font-awesome-rails"
 gem "graphql"
 gem "sidekiq"
 gem "rolify"
+gem "pluck_to_hash"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
