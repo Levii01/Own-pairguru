@@ -49,6 +49,16 @@ RSpec.describe CommentsController, type: :controller do
         expect { subject }.to change(Comment, :count).by(0)
       end
     end
+
+    context "when not spamer try to add second comment" do
+      let!(:comment) { create(:comment, user: user, movie: movie) }
+
+      subject { post :create, params: { comment: valid_attributes } }
+
+      it "creates a new Comment" do
+        expect { subject }.to change(Comment, :count).by(1)
+      end
+    end
   end
 
   describe "DELETE #destroy" do
