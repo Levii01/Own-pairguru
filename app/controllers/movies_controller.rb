@@ -9,6 +9,8 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @movie_data = MovieServices::GetMovieData.call(@movie.title)
+    @comments = @movie.comments
+    @comment = Comment.new
   end
 
   def send_info

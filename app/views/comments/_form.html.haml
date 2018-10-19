@@ -1,0 +1,22 @@
+-if user_signed_in?
+  = form_for @comment do |f|
+    - if flash[:comment_error]
+      .alert.alert-warning
+        %h3= "#{pluralize(flash[:comment_error].count, "error")} prohibited this comment from being saved:"
+        %ul
+          - flash[:comment_error].each do |message|
+            %li= message
+
+    .row
+      .col-xs-8.col-xs-offset-2.tip
+        .col-xs-11.text-justify
+          .form-group
+            = f.label :bodu, 'Comment'
+            = f.text_area :body, "class" => "form-control", :placeholder => "Write comment, and share your opiniona about movie"
+            %small.form-text.text-muted You always can delete comment
+ 
+          = f.hidden_field :user_id, value: current_user.id
+          = f.hidden_field :movie_id, value: @movie&.id
+        .col-xs-1
+          .actions
+            = button_tag "", type: 'submit', class: "btn btn-default glyphicon glyphicon-chevron-left pull-right btn-send"
