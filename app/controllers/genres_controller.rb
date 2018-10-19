@@ -1,6 +1,8 @@
 class GenresController < ApplicationController
   def index
-    @genres = Genre.all.decorate
+    @genres = Genre.all
+    @movies_counted = Genre.includes(:movies).group("movies.genre_id")
+                           .pluck(:id, 'count("movies.id")').to_h
   end
 
   def movies
