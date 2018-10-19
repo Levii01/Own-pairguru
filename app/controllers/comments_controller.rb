@@ -13,7 +13,6 @@ class CommentsController < ApplicationController
 
   def ranking
     @top_users = CommentServices::TopCustomers.call
-
   end
 
   private
