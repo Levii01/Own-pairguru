@@ -1,3 +1,5 @@
+Master: [![CircleCI](https://circleci.com/gh/Levii01/Own-pairguru/tree/master.svg?style=svg)](https://circleci.com/gh/Levii01/Own-pairguru/tree/master)
+
 ## Welcome to Pairguru App!
 Place where we examine our candidates
 
