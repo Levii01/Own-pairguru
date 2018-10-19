@@ -2,9 +2,7 @@ RSpec.describe CommentsController, type: :controller do
   let(:movie) { create(:movie) }
   let(:user) { create(:user) }
 
-  let(:valid_attributes) {
-    { body: "Test comment", movie_id: movie.id, user_id: user.id }
-  }
+  let(:valid_attributes) { { body: "Test comment", movie_id: movie.id, user_id: user.id } }
   let(:invalid_attributes) { { body: "", movie_id: movie.id, user_id: user.id } }
 
   before { sign_in(user) }
