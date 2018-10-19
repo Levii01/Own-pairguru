@@ -13,5 +13,5 @@
           %tr
             %td= i + 1
             %td= genre.name
-            %td= genre.number_of_movies
+            %td= @movies_counted[genre.id]
             %td= genre.created_at
