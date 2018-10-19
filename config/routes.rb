@@ -15,4 +15,9 @@ Rails.application.routes.draw do
       get :export
     end
   end
+  namespace :api, defaults: { format: :json } do
+    match "graphql", to: "graphql#execute", via: [:get, :post]
+  end
+
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/api/graphql' if Rails.env.development?
 end
